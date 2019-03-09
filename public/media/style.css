@@ -1,0 +1,40 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	margin: 0;
+	margin-bottom: 1em;
+	padding: 1em;
+	border-bottom: 1px #444488 solid;
+	background: #222244;
+	color: #ccccff;
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 280%;
+}
+
+p, ul, ol {
+	margin: 2em;
+	font-family: sans-serif;
+}
+
+h2 {
+	margin: 1em;
+	font-family: sans-serif;
+}
+
+pre {
+	margin: 2em;
+	padding: 1em;
+	border: 1px #aaaaaa solid;
+	background: #eeeeee;
+	color: #222222;
+}
+
+code {
+	background: #eeeeee;
+	color: #222222;
+	padding: 0.2em;
+}
