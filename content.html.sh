@@ -14,7 +14,7 @@ cat <<END
 <link rel="stylesheet" href="../../media/style.css" />
 </head>
 <body>
-$( markdown_py -x fenced_code "${mdfile}" )
+$( markdown_py -x fenced_code -x meta "${mdfile}" )
 </body>
 </html>
 END
