@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The average bus stop - dbatley.com</title>
+<link rel="stylesheet" href="media/style.css" />
+<link rel="alternate" type="application/rss+xml" href="index.rss" />
+</head>
+<body>
+<h1>h2g2bob's blog</h1>
+<div class="rsslink"><a href="index.rss">RSS</a></div>
+<div class="index-page">
+{% for item in items %}
+    <div class="item">
+        <h2><a href="{{item.relurl}}">{{item.title}}</a></h2>
+        <p>{{item.description}}</p>
+    </div>
+{% endfor %}
+</div>
+</body>
+</html>

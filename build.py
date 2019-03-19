@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-
 import markdown
 from jinja2 import Template
 from pathlib import Path
+import datetime
 
 BASE_URL = 'https://dbatley.com/blog/'
 PUBLIC_DIR = Path('./public')
@@ -19,8 +19,15 @@ def get_markdown(filename):
     meta = {key: value for key, [value] in md.Meta.items()}
     return (meta, html)
 
-def make_rss(filenames):
-    return _render_template('index.rss', filenames)
+def write_rss_file():
+    filenames = list_md_files()
+    with open((PUBLIC_DIR / 'index.rss').as_posix(), 'w', encoding='utf8') as f:
+        f.write(_render_template('index.rss', filenames))
+
+def write_index_file():
+    filenames = list_md_files()
+    with open((PUBLIC_DIR / 'index.html').as_posix(), 'w', encoding='utf8') as f:
+        f.write(_render_template('index.html', filenames))
 
 def _render_template(template_name, filenames):
     with open('templates/' + template_name, 'r') as f:
@@ -34,12 +41,17 @@ def _render_template(template_name, filenames):
 
 def _meta_for_filename(filename):
     meta, _html = get_markdown(filename)
-    meta['link'] = BASE_URL + Path(filename).relative_to(PUBLIC_DIR).as_posix()
-    return meta
 
-def write_rss_file():
-    with open((PUBLIC_DIR / 'index.rss').as_posix(), 'w', encoding='utf8') as f:
-        f.write(make_rss(list_md_files()))
+    md_link = Path(filename).relative_to(PUBLIC_DIR).as_posix()
+    html_link = md_link.replace(".md", ".html")
+    meta['relurl'] = html_link
+    meta['fullurl'] = BASE_URL + html_link
+
+    pubdate = datetime.datetime.strptime(meta['date'], '%Y-%m-%d').date()
+    meta['rfc822'] = pubdate.strftime('%a, %02d %m %Y 00:00:00 GMT')
+
+    return meta
 
 if __name__ == '__main__':
     write_rss_file()
+    write_index_file()

@@ -6,8 +6,8 @@
     <item>
         <title>{{item.title}}</title>
         <description>{{item.desciption}}</description>
-        <pubDate>{{item.date}}</pubDate>
-        <link>{{item.link}}</link>
+        <pubDate>{{item.rfc822}}</pubDate>
+        <link>{{item.fullurl}}</link>
     </item>
 {% endfor %}
 </channel>

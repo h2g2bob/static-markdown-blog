@@ -38,3 +38,13 @@ code {
 	color: #222222;
 	padding: 0.2em;
 }
+
+div.index-page div.item h2 a {
+    color: #222244;
+    background: white;
+}
+
+div.rsslink {
+    text-align: right;
+    margin-right: 3em;
+}
