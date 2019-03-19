@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0">
+<channel>
+    <title>h2g2bob's blog</title>
+{% for item in items %}
+    <item>
+        <title>{{item.title}}</title>
+        <description>{{item.desciption}}</description>
+        <pubDate>{{item.date}}</pubDate>
+        <link>{{item.link}}</link>
+    </item>
+{% endfor %}
+</channel>
+</rss>

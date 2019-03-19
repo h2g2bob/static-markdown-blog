@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import markdown
-from lxml import etree
+from jinja2 import Template
 from pathlib import Path
 
 BASE_URL = 'https://dbatley.com/blog/'
@@ -20,27 +20,22 @@ def get_markdown(filename):
     return (meta, html)
 
 def make_rss(filenames):
-    root = etree.Element('rss', attrib={'version': '2.0'})
-    channel = etree.SubElement(root, 'channel')
+    with open('templates/index.rss', 'r') as f:
+        template = Template(f.read())
 
-    etree.SubElement(channel, 'title').text = 'h2g2bob\'s blog'
+    context = {
+        'items': [
+            _meta_for_filename(filename)
+            for filename in filenames]}
+    return template.render(context)
 
-    for filename in filenames:
-        item = etree.SubElement(channel, 'item')
-        _populate_rss_item(item, filename)
-
-    return etree.tostring(root, xml_declaration=True, encoding='UTF-8')
-
-def _populate_rss_item(item, filename):
+def _meta_for_filename(filename):
     meta, _html = get_markdown(filename)
-
-    etree.SubElement(item, 'title').text = meta['title']
-    etree.SubElement(item, 'description').text = meta['description']
-    etree.SubElement(item, 'pubDate').text = meta['date']
-    etree.SubElement(item, 'link').text = BASE_URL + Path(filename).relative_to(PUBLIC_DIR).as_posix()
+    meta['link'] = BASE_URL + Path(filename).relative_to(PUBLIC_DIR).as_posix()
+    return meta
 
 def write_rss_file():
-    with open((PUBLIC_DIR / 'index.rss').as_posix(), 'wb') as f:
+    with open((PUBLIC_DIR / 'index.rss').as_posix(), 'w', encoding='utf8') as f:
         f.write(make_rss(list_md_files()))
 
 if __name__ == '__main__':
