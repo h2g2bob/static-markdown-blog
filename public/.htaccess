@@ -1,1 +1,7 @@
 AddDefaultCharset UTF-8
+AddType application/rss+xml .rss
+Header set Content-Security-Policy "default-src 'self'; connect-src 'none'; script-src 'none'"
+Header set Strict-Transport-Security "max-age=31622400"
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
