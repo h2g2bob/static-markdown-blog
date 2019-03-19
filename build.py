@@ -7,51 +7,60 @@ import datetime
 BASE_URL = 'https://dbatley.com/blog/'
 PUBLIC_DIR = Path('./public')
 
-def list_md_files():
+def all_md_files():
     return [
-        pth.as_posix()
+        _meta_for_filename(pth.as_posix())
         for pth in sorted(PUBLIC_DIR.glob('**/*.md'), reverse=True)]
 
-def get_markdown(filename):
+def _get_markdown(filename):
     md = markdown.Markdown(extensions=['meta', 'fenced_code'])
     with open(filename, 'r', encoding='utf8') as fd:
         html = md.convert(fd.read())
     meta = {key: value for key, [value] in md.Meta.items()}
     return (meta, html)
 
-def write_rss_file():
-    filenames = list_md_files()
+def write_rss_file(mdfiles):
     with open((PUBLIC_DIR / 'index.rss').as_posix(), 'w', encoding='utf8') as f:
-        f.write(_render_template('index.rss', filenames))
+        f.write(_render_template('index.rss', mdfiles))
 
-def write_index_file():
-    filenames = list_md_files()
+def write_index_file(mdfiles):
     with open((PUBLIC_DIR / 'index.html').as_posix(), 'w', encoding='utf8') as f:
-        f.write(_render_template('index.html', filenames))
+        f.write(_render_template('index.html', mdfiles))
 
-def _render_template(template_name, filenames):
+def _render_template(template_name, mdfiles):
     with open('templates/' + template_name, 'r') as f:
         template = Template(f.read())
 
-    context = {
-        'items': [
-            _meta_for_filename(filename)
-            for filename in filenames]}
+    context = {'items': mdfiles}
     return template.render(context)
 
 def _meta_for_filename(filename):
-    meta, _html = get_markdown(filename)
+    data = {}
+    meta, html = _get_markdown(filename)
+
+    data['mdfile'] = filename
+    data['htmlfile'] = filename.replace(".md", ".html")
 
     md_link = Path(filename).relative_to(PUBLIC_DIR).as_posix()
     html_link = md_link.replace(".md", ".html")
-    meta['relurl'] = html_link
-    meta['fullurl'] = BASE_URL + html_link
+    data['relurl'] = html_link
+    data['fullurl'] = BASE_URL + html_link
 
-    pubdate = datetime.datetime.strptime(meta['date'], '%Y-%m-%d').date()
-    meta['rfc822'] = pubdate.strftime('%a, %02d %m %Y 00:00:00 GMT')
+    datestr = meta['date']
+    pubdate = datetime.datetime.strptime(datestr, '%Y-%m-%d').date()
+    data['date'] = datestr
+    data['rfc822'] = pubdate.strftime('%a, %02d %m %Y 00:00:00 GMT')
 
-    return meta
+    data['title'] = meta['title']
+    data['description'] = meta['description']
+    data['html'] = html
+
+    return data
+
+def main():
+    mdfiles = all_md_files()
+    write_rss_file(mdfiles)
+    write_index_file(mdfiles)
 
 if __name__ == '__main__':
-    write_rss_file()
-    write_index_file()
+    main()
