@@ -1,2 +1,3 @@
 public/**/*.html
 public/index.rss
+rsync.sh
