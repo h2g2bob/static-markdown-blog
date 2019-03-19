@@ -4,7 +4,7 @@ date: 2019-03-08
 
 # The average bus stop
 
-The excellent [diamond geezer](https://diamondgeezer.blogspot.com/) recently calculated [London's most average bus stop, geographically speaking](https://diamondgeezer.blogspot.com/2019/03/londons-most-geographically-average.html) using data from [a FoI response from TfL](https://tfl.gov.uk/corporate/transparency/freedom-of-information/foi-request-detail?referenceId=FOI-1633-1819).
+Blogger [diamond geezer](https://diamondgeezer.blogspot.com/) recently calculated [London's most average bus stop, geographically speaking](https://diamondgeezer.blogspot.com/2019/03/londons-most-geographically-average.html) using data from [a FoI response from TfL](https://tfl.gov.uk/corporate/transparency/freedom-of-information/foi-request-detail?referenceId=FOI-1633-1819).
 
 But TfL aren't the only people who list all the bus stops. There's also [National Public Transport Access Nodes (NaPTAN)](https://data.gov.uk/dataset/ff93ffc1-6656-47d8-9155-85ea0b8f2251/national-public-transport-access-nodes-naptan), a UK-wide list of all transit stops.
 
