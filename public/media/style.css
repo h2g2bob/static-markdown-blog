@@ -48,3 +48,17 @@ div.rsslink {
     text-align: right;
     margin-right: 3em;
 }
+
+div.footer {
+    border-top: 0.1em #222244 solid;
+    margin: 0;
+    padding: 1em;
+}
+
+div.footer .more {
+    font-weight: bold;
+}
+
+div.footer .date {
+    color: #ccccff;
+}
