@@ -61,6 +61,7 @@ def _meta_for_filename(filename):
 
     data['title'] = meta['title']
     data['description'] = meta['description']
+    data['image'] = meta['image']
     data['html'] = html
 
     return data

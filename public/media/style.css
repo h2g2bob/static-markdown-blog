@@ -1,6 +1,8 @@
 body {
 	margin: 0;
 	padding: 0;
+    background: white;
+    color: black;
 }
 
 h1 {
@@ -61,4 +63,12 @@ div.footer .more {
 
 div.footer .date {
     color: #ccccff;
+}
+
+img.main-image {
+    height: 240px;
+    width: 240px;
+    float: right;
+    margin: 1.2em;
+    border: 0.5em white solid;
 }
