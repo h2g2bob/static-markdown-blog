@@ -57,7 +57,7 @@ def _meta_for_filename(filename):
     datestr = meta['date']
     pubdate = datetime.datetime.strptime(datestr, '%Y-%m-%d').date()
     data['date'] = datestr
-    data['rfc822'] = pubdate.strftime('%a, %02d %m %Y 00:00:00 GMT')
+    data['rfc822'] = pubdate.strftime('%a, %02d %b %Y 00:00:00 GMT')
 
     data['title'] = meta['title']
     data['description'] = meta['description']
