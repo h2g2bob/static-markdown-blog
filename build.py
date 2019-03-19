@@ -20,7 +20,10 @@ def get_markdown(filename):
     return (meta, html)
 
 def make_rss(filenames):
-    with open('templates/index.rss', 'r') as f:
+    return _render_template('index.rss', filenames)
+
+def _render_template(template_name, filenames):
+    with open('templates/' + template_name, 'r') as f:
         template = Template(f.read())
 
     context = {
