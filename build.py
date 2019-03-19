@@ -34,6 +34,14 @@ def _render_template(template_name, mdfiles):
     context = {'items': mdfiles}
     return template.render(context)
 
+def write_blog_entry(mdfile):
+    with open('templates/entry.html', 'r') as f:
+        template = Template(f.read())
+
+    context = {'item': mdfile}
+    with open(mdfile['htmlfile'], 'w', encoding='utf8') as f:
+        f.write(template.render(context))
+
 def _meta_for_filename(filename):
     data = {}
     meta, html = _get_markdown(filename)
@@ -61,6 +69,8 @@ def main():
     mdfiles = all_md_files()
     write_rss_file(mdfiles)
     write_index_file(mdfiles)
+    for mdfile in mdfiles:
+        write_blog_entry(mdfile)
 
 if __name__ == '__main__':
     main()
