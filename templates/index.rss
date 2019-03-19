@@ -5,7 +5,7 @@
 {% for item in items %}
     <item>
         <title>{{item.title}}</title>
-        <description>{{item.desciption}}</description>
+        <description>{{item.description}}</description>
         <pubDate>{{item.rfc822}}</pubDate>
         <link>{{item.fullurl}}</link>
     </item>
