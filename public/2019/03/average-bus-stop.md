@@ -1,6 +1,6 @@
 title: The average bus stop
 description: Where is the average bus stop in the UK?
-date: 2019-03-08
+date: 2019-03-19
 image: uk-median-bus-stop-240.png
 
 # The average bus stop
