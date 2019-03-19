@@ -56,9 +56,14 @@ It looks like Gainsborough Avenue doesn't really exist, so this is the nearest o
 
 ## So, um, about that choice of co-ordinate axes...?
 
-We took the median lattitude and median longitude. But there's no good reason for that: we could have picked any other (orthogonal) axes.
+We took the median lattitude and median longitude.
 
+![Median bus stop on horizontal axes](bus-stop-axes1.png)
+
+But there's no good reason for that: we could have picked any set of orthogonal axes.
 What if we rotated our axes by 45° (`τ/8`)? Would that affect our result?
+
+![Median bus stop on diagonal axes](bus-stop-axes2.png)
 
 Let's define some rotated axes:
 
@@ -117,7 +122,7 @@ select * from naptan_transformed order by abs(51.2967 - slantitude) + abs(54.540
 
 Ignoring bus stops which aren't in use (I think?), the closest one is [Long Lane village church](https://www.openstreetmap.org/search?query=52.9393,-1.62627#map=19/52.93930/-1.62627) in Derbyshire.
 
-This is about 50km away - about the diamater of the M25! Wowzers!
+This is about 50km away - about the diamater of London! Wowzers - the method has a huge impact!
 
 ## A tale of two villages
 
