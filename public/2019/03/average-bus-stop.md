@@ -1,5 +1,6 @@
-Title: The average bus stop
-Date: 2019-03-08
+title: The average bus stop
+description: Where is the average bus stop in the UK?
+date: 2019-03-08
 
 # The average bus stop
 
