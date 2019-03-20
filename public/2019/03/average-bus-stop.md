@@ -68,8 +68,8 @@ What if we rotated our axes by 45° (`τ/8`)? Would that affect our result?
 
 Let's define some rotated axes:
 
-- `slantitude = sin(τ/8)*latitude + cos(τ/8)*longitude = (latitude + longitude) / sqrt(2)`
-- `songitude = sin(-τ/8)*latitude + cos(-τ/8)*longitude = (latitude - longitude) / sqrt(2)`
+- `slantitude = cos(τ/8)*latitude + sin(τ/8)*longitude = (latitude + longitude) / sqrt(2)`
+- `songitude = cos(-τ/8)*latitude + sin(-τ/8)*longitude = (latitude - longitude) / sqrt(2)`
 
 The `sqrt(2)` scaling factors don't matter, so let's do some queries:
 
