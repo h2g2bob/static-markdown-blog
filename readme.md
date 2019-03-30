@@ -1,8 +1,10 @@
 # Simple blog generator
 
+As used by https://dbatley.com/blog/
+
 ## Write blog posts in markdown
 
-In the `public/$YEAR/$MONTH/$WHATEVER` directory.
+Put `.md` files in the `public/$YEAR/$MONTH/` directory.
 
 ## Generate a static website
 
@@ -12,7 +14,7 @@ Running:
 ./build.py
 ```
 
-Re-generates all posts:
+Generates all posts:
 
 - html for blog posts
 - an `index.html` page
